@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MovieDatabaseWebApp.Data;
 using MovieDatabaseWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MovieDatabaseWebApp.Controllers
 {
@@ -44,6 +45,7 @@ namespace MovieDatabaseWebApp.Controllers
         }
 
         // GET: Movies/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -52,6 +54,7 @@ namespace MovieDatabaseWebApp.Controllers
         // POST: Movies/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Avalibility,Name")] Movie movie)
@@ -86,6 +89,7 @@ namespace MovieDatabaseWebApp.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Avalibility,Name")] Movie movie)
         {
             if (id != movie.Id)
@@ -117,6 +121,7 @@ namespace MovieDatabaseWebApp.Controllers
         }
 
         // GET: Movies/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -135,6 +140,7 @@ namespace MovieDatabaseWebApp.Controllers
         }
 
         // POST: Movies/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -149,5 +155,6 @@ namespace MovieDatabaseWebApp.Controllers
         {
             return _context.Movie.Any(e => e.Id == id);
         }
+    
     }
 }

@@ -165,7 +165,8 @@ $.validator.addMethod( "bic", function( value, element ) {
  *   E. Communities of goods
  *   F. Cooperative Societies
  *   G. Associations
- *   H. Communities of homeowners in horizontal property regime
+ *   H. Communities of 
+ *   owners in horizontal property regime
  *   J. Civil Societies
  *   K. Old format
  *   L. Old format
@@ -198,7 +199,10 @@ $.validator.addMethod( "cifES", function( value, element ) {
 		return true;
 	}
 
-	var cifRegEx = new RegExp( /^([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])$/gi );
+	var cifRegEx
+
+
+	new RegExp(/^([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])$/gi);
 	var letter  = value.substring( 0, 1 ), // [ T ]
 		number  = value.substring( 1, 8 ), // [ P ][ P ][ N ][ N ][ N ][ N ][ N ]
 		control = value.substring( 8, 9 ), // [ C ]
